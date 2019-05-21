@@ -6,7 +6,7 @@ Meta-SR: A Magnification-Arbitrary Network for Super-Resolution(CVPR2019)(PyTorc
 @article{hu2019meta,
   title={Meta-SR: A Magnification-Arbitrary Network for Super-Resolution},
   author={Hu, Xuecai and Mu, Haoyuan and Zhang, Xiangyu and Wang, Zilei and Sun, Jian and Tan, Tieniu},
-  journal={arXiv preprint arXiv:1903.00875},
+  booktitle={IEEE Conference on Computer Vision and Pattern Recognition},
   year={2019}
 }
 ```
