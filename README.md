@@ -14,7 +14,7 @@ Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch
 ```
 @article{hu2019meta,
   title={Meta-SR: A Magnification-Arbitrary Network for Super-Resolution},
-  author={Hu, Xuecai and Mu, Haoyuan and Zhang, Xiangyu and Wang, Zilei and Sun, Jian and Tan, Tieniu},
+  author={Hu, Xuecai and Mu, Haoyuan and Zhang, Xiangyu and Wang, Zilei  and Tan, Tieniu and Sun, Jian},
   booktitle={IEEE Conference on Computer Vision and Pattern Recognition},
   year={2019}
 }
