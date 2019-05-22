@@ -1,4 +1,4 @@
-# MetaSR
+# Meta-SR
 Meta-SR: A Magnification-Arbitrary Network for Super-Resolution(CVPR2019)(PyTorch)
 
 Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch).
