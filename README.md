@@ -17,7 +17,7 @@ run the matlab files:
 
 ## train 
 ```
-cd /Meta-SR-Pytorch  \n
+cd /Meta-SR-Pytorch 
 python main.py --model metardn --save metardn_model_name --ext sep --lr_decay 200 --epochs 1000 
 ```
 ## test 
