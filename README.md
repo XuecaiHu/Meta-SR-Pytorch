@@ -14,7 +14,7 @@ Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch
 * prepare dataset: we follow the previous work, that is, we use the matlab imresize function to generate the LR images.
 run the matlab files: 
 * change the config: include dir_data
-
+* pre_train model : baiduyun                google
 ## train 
 ```
 cd /Meta-SR-Pytorch 
