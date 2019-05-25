@@ -15,11 +15,11 @@ Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch
 run the matlab files: 
 * change the config: include dir_data
 
-train 
+## train 
 cd /Meta-SR-Pytorch
 python main.py --model metardn --save metardn_model_name --ext sep --lr_decay 200 --epochs 1000 
 
-test 
+## test 
 python main.py --model metardn --save metardn_model_name --ext sep --test_only --data_test BSD/Set14/Set5  --scale 2.3
 
 # Citation
