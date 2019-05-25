@@ -22,7 +22,7 @@ python main.py --model metardn --save metardn_model_name --ext sep --lr_decay 20
 ```
 ## test 
 ```
-python main.py --model metardn --save metardn_model_name --ext sep --test_only --data_test BSD/Set14/Set5  --scale 2.3
+python main.py --model metardn --save metardn_model_name --ext sep --pre_train **** --test_only --data_test BSD or Set14 orSet5  --scale 2.3
 ```
 # Citation
 ```
