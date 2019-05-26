@@ -19,7 +19,7 @@ we can run the matlab files :  /prepare_dataset/geberate_LR_metasr_X1_X4.m
 ## train 
 ```
 cd /Meta-SR-Pytorch 
-python main.py --model metardn --save metardn_model_name --ext sep --lr_decay 200 --epochs 1000 
+python main.py --model metardn --save metardn_model_name --ext sep --lr_decay 200 --epochs 1000 --n_GPUs 4 --batch_size 16 
 ```
 ## test 
 ```
