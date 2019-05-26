@@ -15,6 +15,11 @@ for idx_im = 1:nb_im
     ImHR = imread(fullfile(path_src, filepaths(idx_im).name));
     DIV2K_HR{idx_im} = ImHR;
 end
+FolderLR_bicubic = fullfile(path_save,'LR_bicubic')
+if ~exist(FolderLR_bicubic)
+    mkdir(FolderLR_bicubic)
+end
+    
 %% generate and save LR via imresize() with Bicubic
 for scale=1.1:0.1:4
     FolderLR = fullfile(path_save,'LR_bicubic', sprintf('X%.2f',scale));
