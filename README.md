@@ -13,7 +13,7 @@ Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch
 
 # Train and Test
 * prepare dataset: we follow the previous work, that is, we use the matlab imresize function to generate the LR images.
-run the matlab files :  /prepare_dataset/geberate_LR_metasr_X1_X4.m
+we can run the matlab files :  /prepare_dataset/geberate_LR_metasr_X1_X4.m
 * change the config file option.py : include dir_data
 * pre_train model : baiduyun                google
 ## train 
