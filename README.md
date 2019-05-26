@@ -9,6 +9,7 @@ Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch
 * numpy
 * skimage
 * imageio
+* cv2
 
 # Train and Test
 * prepare dataset: we follow the previous work, that is, we use the matlab imresize function to generate the LR images.
