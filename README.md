@@ -36,3 +36,5 @@ python main.py --model metardn --save metardn_model_name --ext sep --pre_train *
   year={2019}
 }
 ```
+# Contact
+Xuecai Hu (huxc@mail.ustc.edu.cn)
