@@ -1,5 +1,6 @@
 # Meta-SR
 Official implementation of **Meta-SR: A Magnification-Arbitrary Network for Super-Resolution(CVPR2019)(PyTorch)**
+[paper](https://arxiv.org/pdf/1903.00875.pdf)
 
 Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch).
 # Requirements
