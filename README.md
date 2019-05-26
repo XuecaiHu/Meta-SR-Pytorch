@@ -12,7 +12,7 @@ Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch
 * skimage
 * imageio
 * cv2  
-note that if you use another version of pytorch (>0.4.0), you can rewrite the dataloader.py
+*note that if you use another version of pytorch (>0.4.0), you can rewrite the dataloader.py
 # Train and Test
 * prepare dataset: we follow the previous work, that is, we use the matlab imresize function to generate the LR images.
 we can run the matlab files :  /prepare_dataset/geberate_LR_metasr_X1_X4.m
