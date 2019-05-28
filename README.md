@@ -18,8 +18,8 @@ Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch
 you can run the matlab files to get the training and test dataset :  /prepare_dataset/geberate_LR_metasr_X1_X4.m
 * change the config file option.py : include dir_data
 * pre_train model   
-  [baiduyun](https://pan.baidu.com/s/14L4Aut-F4JoSRfkJh6vr4Q) fetch code: btc5  
-  [googledrive](https://drive.google.com/open?id=1tGjz_pzgvo1T2N4f_ZjuqmxQHdpeDiSB)
+  [BaiduYun](https://pan.baidu.com/s/14L4Aut-F4JoSRfkJh6vr4Q) fetch code: btc5  
+  [GoogleDrive](https://drive.google.com/open?id=1tGjz_pzgvo1T2N4f_ZjuqmxQHdpeDiSB)
 ## train 
 ```
 cd /Meta-SR-Pytorch 
