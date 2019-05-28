@@ -15,10 +15,11 @@ Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch
 *note that if you use another version of pytorch (>0.4.0), you can rewrite the dataloader.py
 # Train and Test
 * prepare dataset: we follow the previous work, that is, we use the matlab imresize function to generate the LR images.
-we can run the matlab files :  /prepare_dataset/geberate_LR_metasr_X1_X4.m
+you can run the matlab files to get the training and test dataset :  /prepare_dataset/geberate_LR_metasr_X1_X4.m
 * change the config file option.py : include dir_data
-* pre_train model : [baiduyun](https://pan.baidu.com/s/14L4Aut-F4JoSRfkJh6vr4Q) fetch code: btc5  
-                    [googledrive](https://drive.google.com/open?id=1tGjz_pzgvo1T2N4f_ZjuqmxQHdpeDiSB)
+* pre_train model   
+  [baiduyun](https://pan.baidu.com/s/14L4Aut-F4JoSRfkJh6vr4Q) fetch code: btc5  
+  [googledrive](https://drive.google.com/open?id=1tGjz_pzgvo1T2N4f_ZjuqmxQHdpeDiSB)
 ## train 
 ```
 cd /Meta-SR-Pytorch 
