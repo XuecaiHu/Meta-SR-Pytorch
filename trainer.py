@@ -138,7 +138,7 @@ class Trainer():
                 scale_coord_map = scale_coord_map.cuda()
             
             self.optimizer.zero_grad()
-            sr = self.model(lr, idx_scale, position)
+            sr = self.model(lr, idx_scale, scale_coord_map)
             re_sr = torch.masked_select(sr,mask.cuda())
             re_sr = re_sr.contiguous().view(N,C,outH,outW)
             loss = self.loss(re_sr, hr)
