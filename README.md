@@ -13,7 +13,31 @@ Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch
 * imageio
 * cv2  
 *note that if you use another version of pytorch (>0.4.0), you can rewrite the dataloader.py
+
+# Install and run demo
+1. download the code
+...
+git clone https://github.com/XuecaiHu/Meta-SR-Pytorch.git
+cd Meta-SR-Pytorch
+...
+2. change the option.py: dir_data = /path to/Meta-SR-Pytorch
+
+3. run training demo:
+'''
+python main.py --model metardn --ext sep --lr_decay 200 --epochs 1000 --n_GPUs 1 --batch_size 1
+
+'''
+4. run test demo:
+'''
+python main.py --model metardn --ext sep --lr_decay 200 --epochs 1000 --n_GPUs 1 --batch_size 1 --test_only --data_test Set5 --pre_train  /path to pretrain model/  --save_results
+
+'''
+
 # Train and Test
+
+
+
+
 * prepare dataset: we follow the previous work, that is, we use the matlab imresize function to generate the LR images.
 you can run the matlab files to get the training and test dataset :  /prepare_dataset/geberate_LR_metasr_X1_X4.m
 * change the config file option.py : include dir_data
