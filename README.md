@@ -39,7 +39,9 @@ python main.py --model metardn --ext sep  --save metardn --n_GPUs 1 --batch_size
 # Train and Test as our paper
 
 1.  prepare  dataset
-  1) /prepare_dataset/geberate_LR_metasr_X1_X4.m
+   *  change the path_src = DIV2K HR image folder path and run /prepare_dataset/geberate_LR_metasr_X1_X4.m 
+   *  upload the dataset 
+   * change the  dir_data in option.py： dir_data = "/path to your DIV2K and testing dataset'(keep the training and test dataset in the same folder: test dataset under the benchmark folder and training dataset rename to DIV2K, or change the data_train to your folder name)  
   2) prepare
 2. change the config file option.py : include dir_data
 3. pre_train model   
