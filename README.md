@@ -21,14 +21,13 @@ git clone https://github.com/XuecaiHu/Meta-SR-Pytorch.git
 cd Meta-SR-Pytorch
 ```
 
-2. change the option.py: dir_data = /path to/Meta-SR-Pytorch
 
-3. run training demo:
+2. run training demo:
 ```
 python main.py --model metardn --ext sep  --save metardn --lr_decay 200 --epochs 1000 --n_GPUs 1 --batch_size 1
 ```
 
-4. run test demo:
+3. run test demo:
 * download the model from the [BaiduYun](https://pan.baidu.com/s/14L4Aut-F4JoSRfkJh6vr4Q) fetch code: btc5. 
 * put the model_1000.pt under the ./eperiment/metardn/model/
 
