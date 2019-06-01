@@ -19,13 +19,13 @@ parser.add_argument('--seed', type=int, default=1,
                     help='random seed')
 
 # Data specifications
-parser.add_argument('--dir_data', type=str, default='/home/xuecai.hu/code/EDSR-PyTorch/',
+parser.add_argument('--dir_data', type=str, default='your path to/Meta-SR-Pytorch/',
                     help='dataset directory')
 parser.add_argument('--dir_demo', type=str, default='../test',
                     help='demo image directory')
 parser.add_argument('--data_train', type=str, default='DIV2K',
                     help='train dataset name')
-parser.add_argument('--data_test', type=str, default='B100',
+parser.add_argument('--data_test', type=str, default='Set5',
                     help='test dataset name')
 parser.add_argument('--data_range', type=str, default='1-800/801-810',
                     help='train/test data range')
