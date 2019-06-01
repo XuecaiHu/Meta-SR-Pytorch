@@ -49,7 +49,7 @@ class Trainer():
         mask_w = torch.zeros(1, inW, scale_int)
         if add_scale:
             scale_mat = torch.zeros(1,1)
-            scale_mat[0,0] = 1/scale
+            scale_mat[0,0] = 1.0/scale
             #res_scale = scale_int - scale
             #scale_mat[0,scale_int-1]=1-res_scale
             #scale_mat[0,scale_int-2]= res_scale
