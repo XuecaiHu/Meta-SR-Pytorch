@@ -247,7 +247,6 @@ class Trainer():
                         best[1][idx_scale] + 1
                     )
                 )
-        print(timer_test.acc/100)
         self.ckp.write_log(
             'Total time: {:.2f}s\n'.format(timer_test.toc()), refresh=True
         )
