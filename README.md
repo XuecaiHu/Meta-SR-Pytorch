@@ -38,8 +38,9 @@ python main.py --model metardn --ext sep  --save metardn --n_GPUs 1 --batch_size
 
 # Train and Test as our paper
 
-1.  prepare  dataset: we follow the previous work, that is, we use the matlab imresize function to generate the LR images.
-you can run the matlab files to get the training and test dataset :  /prepare_dataset/geberate_LR_metasr_X1_X4.m
+1.  prepare  dataset
+  1) /prepare_dataset/geberate_LR_metasr_X1_X4.m
+  2) prepare
 2. change the config file option.py : include dir_data
 3. pre_train model   
   [BaiduYun](https://pan.baidu.com/s/14L4Aut-F4JoSRfkJh6vr4Q) fetch code: btc5  
