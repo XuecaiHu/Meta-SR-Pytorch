@@ -42,19 +42,18 @@ python main.py --model metardn --ext sep  --save metardn --n_GPUs 1 --batch_size
    *  change the path_src = DIV2K HR image folder path and run /prepare_dataset/geberate_LR_metasr_X1_X4.m 
    *  upload the dataset 
    * change the  dir_data in option.py： dir_data = "/path to your DIV2K and testing dataset'(keep the training and test dataset in the same folder: test dataset under the benchmark folder and training dataset rename to DIV2K, or change the data_train to your folder name)  
-  2) prepare
-2. change the config file option.py : include dir_data
-3. pre_train model   
+2. pre_train model  for test
   [BaiduYun](https://pan.baidu.com/s/14L4Aut-F4JoSRfkJh6vr4Q) fetch code: btc5  
   [GoogleDrive](https://drive.google.com/open?id=1tGjz_pzgvo1T2N4f_ZjuqmxQHdpeDiSB)
+  
 ## train 
 ```
 cd /Meta-SR-Pytorch 
-python main.py --model metardn --save metardn_model_name --ext sep --lr_decay 200 --epochs 1000 --n_GPUs 4 --batch_size 16 
+python main.py --model metardn --save metardn --ext sep --lr_decay 200 --epochs 1000 --n_GPUs 4 --batch_size 16 
 ```
 ## test 
 ```
-python main.py --model metardn --save metardn_model_name --ext sep --pre_train **** --test_only --data_test BSD or Set14 orSet5  --scale 2.3
+python main.py --model metardn --save metardn --ext sep --pre_train ./experiment/metardn/model/model_1000.pt --test_only --data_test Set5  --scale 1.5 --n_GPUs 1
 ```
 # Citation
 ```
