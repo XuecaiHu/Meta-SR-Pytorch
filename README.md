@@ -36,15 +36,12 @@ python main.py --model metardn --ext sep  --save metardn --lr_decay 200 --epochs
 python main.py --model metardn --ext sep  --save metardn --n_GPUs 1 --batch_size 1 --test_only --data_test Set5 --pre_train  ./experiment/metardn/model/model_1000.pt  --save_results --scale 1.5
 ```
 
-# Train and Test
+# Train and Test as our paper
 
-
-
-
-* prepare dataset: we follow the previous work, that is, we use the matlab imresize function to generate the LR images.
+1.  prepare  dataset: we follow the previous work, that is, we use the matlab imresize function to generate the LR images.
 you can run the matlab files to get the training and test dataset :  /prepare_dataset/geberate_LR_metasr_X1_X4.m
-* change the config file option.py : include dir_data
-* pre_train model   
+2. change the config file option.py : include dir_data
+3. pre_train model   
   [BaiduYun](https://pan.baidu.com/s/14L4Aut-F4JoSRfkJh6vr4Q) fetch code: btc5  
   [GoogleDrive](https://drive.google.com/open?id=1tGjz_pzgvo1T2N4f_ZjuqmxQHdpeDiSB)
 ## train 
