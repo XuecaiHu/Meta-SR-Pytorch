@@ -134,7 +134,7 @@ class Trainer():
             _,_,outH,outW = hr.size()
             scale_coord_map, mask = self.input_matrix_wpn(H,W,self.args.scale[idx_scale])  ###  get the position matrix, mask
 
-            if self.args.n_GPUs>1:
+            if self.args.n_GPUs>1 and not self.args.cpu:
                 scale_coord_map = torch.cat([scale_coord_map]*self.args.n_GPUs,0)
             else:
                 scale_coord_map = scale_coord_map.to(device)
@@ -209,7 +209,7 @@ class Trainer():
                     scale_coord_map, mask = self.input_matrix_wpn(H,W,self.args.scale[idx_scale])
                     #position, mask = self.pos_matrix(H,W,self.args.scale[idx_scale])
                     #print(timer_test.toc())
-                    if self.args.n_GPUs>1:
+                    if self.args.n_GPUs>1 and not self.args.cpu:
                         scale_coord_map = torch.cat([scale_coord_map]*self.args.n_GPUs,0)
                     else:
                         scale_coord_map = scale_coord_map.to(device)
