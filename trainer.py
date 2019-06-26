@@ -122,7 +122,9 @@ class Trainer():
         )
         self.loss.start_log()
         self.model.train()
-
+        
+        device = torch.device('cpu' if self.args.cpu else 'cuda')
+        
         timer_data, timer_model = utility.timer(), utility.timer()
         for batch, (lr, hr, _, idx_scale) in enumerate(self.loader_train):
             lr, hr = self.prepare(lr, hr)
@@ -135,11 +137,11 @@ class Trainer():
             if self.args.n_GPUs>1:
                 scale_coord_map = torch.cat([scale_coord_map]*self.args.n_GPUs,0)
             else:
-                scale_coord_map = scale_coord_map.cuda()
+                scale_coord_map = scale_coord_map.to(device)
             
             self.optimizer.zero_grad()
             sr = self.model(lr, idx_scale, scale_coord_map)
-            re_sr = torch.masked_select(sr,mask.cuda())
+            re_sr = torch.masked_select(sr,mask.to(device))
             re_sr = re_sr.contiguous().view(N,C,outH,outW)
             loss = self.loss(re_sr, hr)
             
@@ -183,6 +185,7 @@ class Trainer():
         self.ckp.add_log(torch.zeros(1, len(self.scale)))
         self.model.eval()
         timer_test = utility.timer()
+        device = torch.device('cpu' if self.args.cpu else 'cuda')
         with torch.no_grad():
             for idx_scale, scale in enumerate(self.scale):
                 eval_acc = 0
@@ -209,12 +212,12 @@ class Trainer():
                     if self.args.n_GPUs>1:
                         scale_coord_map = torch.cat([scale_coord_map]*self.args.n_GPUs,0)
                     else:
-                        scale_coord_map = scale_coord_map.cuda()
+                        scale_coord_map = scale_coord_map.to(device)
 
                     timer_test.tic()
                     sr = self.model(lr, idx_scale,scale_coord_map)
                     timer_test.hold()
-                    re_sr = torch.masked_select(sr,mask.cuda())
+                    re_sr = torch.masked_select(sr,mask.to(device))
                     sr = re_sr.contiguous().view(N,C,outH,outW)
                     sr = utility.quantize(sr, self.args.rgb_range)
                     #timer_test.hold()
