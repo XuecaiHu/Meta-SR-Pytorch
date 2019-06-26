@@ -19,7 +19,7 @@ class Pos2Weight(nn.Module):
         self.kernel_size=kernel_size
         self.outC = outC
         self.meta_block=nn.Sequential(
-            nn.Linear(6,256),
+            nn.Linear(3,256),
             nn.ReLU(inplace=True),
             nn.Linear(256,self.kernel_size*self.kernel_size*self.inC*self.outC)
         )
