@@ -54,7 +54,7 @@ class Model(nn.Module):
             return self.model(x,pos_mat)
 
     def get_model(self):
-        if self.n_GPUs <= 1:
+        if self.n_GPUs <= 1 or self.args.cpu:
             return self.model
         else:
             return self.model.module
