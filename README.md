@@ -5,7 +5,7 @@ Official implementation of **Meta-SR: A Magnification-Arbitrary Network for Supe
 
 Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch).
 
-#Attention
+# Attention
 I find an error in my camera-ready, the PSNR of our Meta-RDN on scale 1.2 is 40.04 not 40.40.
 # Requirements
 
