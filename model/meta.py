@@ -96,7 +96,7 @@ class RDN(nn.Module):
         x += f__1
 
         # Up-sampling net
-        up_x, up_input = upsampling(x,input_sub,2)
+        up_x, up_input = upsampling(x,input_sub,scale)
         w_x = self.weight_conv(up_x)
 
         x = up_input + w_x
@@ -110,13 +110,12 @@ def upsampling(x, input,scale=2):
     # the scale
     h, w = x.size()[2:]
     hr_h, hr_w = int(scale * h), int(scale * w)
-    h_scale = hr_h / h
-    w_scale = hr_w / w
 
-    pos_h = torch.arange(0,hr_h/h_scale,1/h_scale).repeat(hr_w)
+
+    pos_h = torch.arange(0,hr_h/scale,1/scale).repeat(hr_w)
     pos_h = pos_h.view(1,1,hr_w,hr_h).transpose(3,2)
 
-    pos_w = torch.arange(0,hr_w/w_scale, 1/w_scale).repeat(hr_h)
+    pos_w = torch.arange(0,hr_w/scale, 1/scale).repeat(hr_h)
     pos_w = pos_w.view(1,1,hr_h,hr_w)
 
     pos = torch.cat((pos_h,pos_w),1)
