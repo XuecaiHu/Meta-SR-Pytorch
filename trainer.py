@@ -33,36 +33,30 @@ class Trainer():
     ######by given the scale and the size of input image
     ######we caculate the input matrix for the weight prediction network
     ###### input matrix for weight prediction network
-    def input_matrix_wpn(self,inH, inW, scale, add_scale=True):
+
+    def input_matrix_wpn_new(self, inH, inW, scale, add_scale=True):
         '''
         inH, inW: the size of the feature maps
         scale: is the upsampling times
         '''
-        outH, outW = int(scale*inH), int(scale*inW)
-
+        outH, outW = int(scale * inH), int(scale * inW)
         #### mask records which pixel is invalid, 1 valid or o invalid
         #### h_offset and w_offset caculate the offset to generate the input matrix
         scale_int = int(math.ceil(scale))
         h_offset = torch.ones(inH, scale_int, 1)
-        mask_h = torch.zeros(inH,  scale_int, 1)
+        mask_h = torch.zeros(inH, scale_int, 1)
         w_offset = torch.ones(1, inW, scale_int)
         mask_w = torch.zeros(1, inW, scale_int)
-        if add_scale:
-            scale_mat = torch.zeros(1,1)
-            scale_mat[0,0] = 1.0/scale
-            #res_scale = scale_int - scale
-            #scale_mat[0,scale_int-1]=1-res_scale
-            #scale_mat[0,scale_int-2]= res_scale
-            scale_mat = torch.cat([scale_mat]*(inH*inW*(scale_int**2)),0)  ###(inH*inW*scale_int**2, 4)
 
-        ####projection  coordinate  and caculate the offset 
-        h_project_coord = torch.arange(0,outH, 1).float().mul(1.0/scale)
+
+        ####projection  coordinate  and caculate the offset
+        h_project_coord = torch.arange(0, outH, 1).mul(1.0 / scale)
         int_h_project_coord = torch.floor(h_project_coord)
 
         offset_h_coord = h_project_coord - int_h_project_coord
         int_h_project_coord = int_h_project_coord.int()
 
-        w_project_coord = torch.arange(0, outW, 1).float().mul(1.0/scale)
+        w_project_coord = torch.arange(0, outW, 1).mul(1.0 / scale)
         int_w_project_coord = torch.floor(w_project_coord)
 
         offset_w_coord = w_project_coord - int_w_project_coord
@@ -74,7 +68,7 @@ class Trainer():
         for i in range(outH):
             if int_h_project_coord[i] == number:
                 h_offset[int_h_project_coord[i], flag, 0] = offset_h_coord[i]
-                mask_h[int_h_project_coord[i], flag,  0] = 1
+                mask_h[int_h_project_coord[i], flag, 0] = 1
                 flag += 1
             else:
                 h_offset[int_h_project_coord[i], 0, 0] = offset_h_coord[i]
@@ -103,13 +97,27 @@ class Trainer():
         mask_w = torch.cat([mask_w] * (scale_int * inH), 0).view(-1, scale_int * inW, 1)
 
         pos_mat = torch.cat((h_offset_coord, w_offset_coord), 2)
-        mask_mat = torch.sum(torch.cat((mask_h,mask_w),2),2).view(scale_int*inH,scale_int*inW)
-        mask_mat = mask_mat.eq(2)
-        pos_mat = pos_mat.contiguous().view(1, -1,2)
-        if add_scale:
-            pos_mat = torch.cat((scale_mat.view(1,-1,1), pos_mat),2)
 
-        return pos_mat,mask_mat ##outH*outW*2 outH=scale_int*inH , outW = scale_int *inW
+
+        mask_mat = torch.sum(torch.cat((mask_h, mask_w), 2), 2).view(scale_int * inH, scale_int * inW)
+        mask_mat = mask_mat.eq(2)
+
+        i = 1
+        while(pos_mat[i][0][0]!=0):
+            i = i+1
+
+        pos_mat_small = pos_mat[0:i,0:i,:]
+
+        pos_mat_small = pos_mat_small.contiguous().view(1, -1, 2)
+        if add_scale:
+            scale_mat = torch.zeros(1, 1)
+            scale_mat[0, 0] = 1.0 / scale
+            scale_mat = torch.cat([scale_mat] * (pos_mat_small.size(1)), 0)  ###(inH*inW*scale_int**2, 4)
+            pos_mat_small = torch.cat((scale_mat.view(1, -1, 1), pos_mat_small), 2)
+
+        return pos_mat_small, mask_mat  ##outH*outW*2 outH=scale_int*inH , outW = scale_int *inW
+
+        ########speed up the model by removing the computation
 
     def train(self):
         self.scheduler.step()
@@ -132,7 +140,7 @@ class Trainer():
             timer_model.tic()
             N,C,H,W = lr.size()
             _,_,outH,outW = hr.size()
-            scale_coord_map, mask = self.input_matrix_wpn(H,W,self.args.scale[idx_scale])  ###  get the position matrix, mask
+            scale_coord_map, mask = self.input_matrix_wpn_new(H,W,self.args.scale[idx_scale])  ###  get the position matrix, mask
 
             if self.args.n_GPUs>1 and not self.args.cpu:
                 scale_coord_map = torch.cat([scale_coord_map]*self.args.n_GPUs,0)
