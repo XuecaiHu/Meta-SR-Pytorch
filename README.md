@@ -5,6 +5,7 @@ Official implementation of **Meta-SR: A Magnification-Arbitrary Network for Supe
 
 Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch).
 
+
 # Attention
 I find an error in my camera-ready, the PSNR of our Meta-RDN on scale 1.2 is 40.04 not 40.40.
 # Requirements
@@ -16,6 +17,10 @@ I find an error in my camera-ready, the PSNR of our Meta-RDN on scale 1.2 is 40.
 * imageio
 * cv2  
 *note that if you use another version of pytorch (>0.4.0), you can rewrite the dataloader.py
+
+# Update notes
+2019/12/06   I rewrite the input_matrix_wpn function in trainer.py. Since the offset is repeated, there are many repeated weight prediction. I remove them. In the metardn, we use repeated_weights to extend a small matrix to a matrix with same size of the feature maps.
+
 
 # Install and run demo
 1. download the code
