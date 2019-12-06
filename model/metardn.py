@@ -108,7 +108,21 @@ class MetaRDN(nn.Module):
         x = torch.cat([x]*scale_int,5).permute(0,3,5,1,2,4)
 
         return x.contiguous().view(-1, C, H, W)
+   
+    def repeat_weight(self, weight, scale, inw,inh):
+        k = int(math.sqrt(weight.size(0)))
+        outw  =inw * scale
+        outh = inh * scale
+        weight = weight.view(k, k, -1)
+        scale_w = (outw+k-1) // k
+        scale_h = (outh + k - 1) // k
+        weight = torch.cat([weight] * scale_h, 0)
+        weight = torch.cat([weight] * scale_w, 1)
 
+        weight = weight[0:outh,0:outw,:]
+
+        return weight
+    
     def forward(self, x, pos_mat):
         #d1 =time.time()
         x = self.sub_mean(x)
@@ -128,7 +142,8 @@ class MetaRDN(nn.Module):
 
         cols = nn.functional.unfold(up_x, 3,padding=1)
         scale_int = math.ceil(self.scale)
-
+        local_weight = self.repeat_weight(local_weight,scale_int,x.size(2),x.size(3))
+        
         cols = cols.contiguous().view(cols.size(0)//(scale_int**2),scale_int**2, cols.size(1), cols.size(2), 1).permute(0,1, 3, 4, 2).contiguous()
 
         local_weight = local_weight.contiguous().view(x.size(2),scale_int, x.size(3),scale_int,-1,3).permute(1,3,0,2,4,5).contiguous()
