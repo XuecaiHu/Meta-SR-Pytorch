@@ -103,11 +103,19 @@ class Trainer():
         mask_mat = mask_mat.eq(2)
 
         i = 1
-        while(pos_mat[i][0][0]!=0):
+        #pdb.set_trace()
+        h, w,_ = pos_mat.size()
+        while(pos_mat[i][0][0]<= 1e-6 and i<h):
             i = i+1
 
-        pos_mat_small = pos_mat[0:i,0:i,:]
+        j = 1
+        #pdb.set_trace()
+        h, w,_ = pos_mat.size()
+        while(pos_mat[0][j][1]<= 1e-6 and j<w):
+            j = j+1
 
+        pos_mat_small = pos_mat[0:i,0:j,:]
+        
         pos_mat_small = pos_mat_small.contiguous().view(1, -1, 2)
         if add_scale:
             scale_mat = torch.zeros(1, 1)
