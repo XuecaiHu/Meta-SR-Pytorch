@@ -19,7 +19,7 @@ I find an error in my camera-ready, the PSNR of our Meta-RDN on scale 1.2 is 40.
 *note that if you use another version of pytorch (>0.4.0), you can rewrite the dataloader.py
 
 # Update notes
-* 2019/12/23: fix a bug in https://github.com/XuecaiHu/Meta-SR-Pytorch/blob/f2cf094248defef242973282627ac8ea50d2e806/trainer.py#L107 , since the zeros in the double data type is a real zero.
+* 2019/12/23: fix a bug in https://github.com/XuecaiHu/Meta-SR-Pytorch/blob/f2cf094248defef242973282627ac8ea50d2e806/trainer.py#L107 , since the zeros in the double data type isnot a real zero.
 
 * 2019/12/06:   I rewrite the input_matrix_wpn function in trainer.py. Since the offset is repeated, there are many repeated weight prediction. I remove them. In the metardn, we use repeated_weights to extend a small matrix to a matrix with same size of the feature maps.  This version use less memory and less inference times.
 * todo provide code for pytorch 1.0, 1.1 and 1.2
