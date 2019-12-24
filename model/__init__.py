@@ -49,7 +49,7 @@ class Model(nn.Module):
 
             return self.forward_x8(x, forward_function)
         elif self.chop and not self.training:
-            return self.forward_chop(x)
+            return self.forward_chop(x,pos_mat)
         else:
             return self.model(x,pos_mat)
 
@@ -113,7 +113,7 @@ class Model(nn.Module):
             )
             print('load_model_mode=2')
 
-    def forward_chop(self, x, shave=10, min_size=160000):
+    def forward_chop(self, x, pos_mat, shave=10, min_size=160000):
         scale = self.scale[self.idx_scale]
         n_GPUs = min(self.n_GPUs, 4)
         b, c, h, w = x.size()
@@ -129,11 +129,11 @@ class Model(nn.Module):
             sr_list = []
             for i in range(0, 4, n_GPUs):
                 lr_batch = torch.cat(lr_list[i:(i + n_GPUs)], dim=0)
-                sr_batch = self.model(lr_batch)
+                sr_batch = self.model(lr_batch, pos_mat)
                 sr_list.extend(sr_batch.chunk(n_GPUs, dim=0))
         else:
             sr_list = [
-                self.forward_chop(patch, shave=shave, min_size=min_size) \
+                self.forward_chop(patch, pos_mat, shave=shave, min_size=min_size) \
                 for patch in lr_list
             ]
 
