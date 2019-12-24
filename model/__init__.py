@@ -3,6 +3,7 @@ from importlib import import_module
 
 import torch
 import torch.nn as nn
+import math
 from torch.autograd import Variable
 
 class Model(nn.Module):
@@ -136,7 +137,7 @@ class Model(nn.Module):
                 self.forward_chop(patch, pos_mat, shave=shave, min_size=min_size) \
                 for patch in lr_list
             ]
-
+        scale = math.ceil(scale)
         h, w = scale * h, scale * w
         h_half, w_half = scale * h_half, scale * w_half
         h_size, w_size = scale * h_size, scale * w_size
