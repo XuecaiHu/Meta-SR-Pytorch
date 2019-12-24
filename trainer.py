@@ -221,7 +221,7 @@ class Trainer():
                     #_,_,outH,outW = hr.size()
                     #timer_test.tic()
 
-                    scale_coord_map, mask = self.input_matrix_wpn(H,W,self.args.scale[idx_scale])
+                    scale_coord_map, mask = self.input_matrix_wpn_new(H,W,self.args.scale[idx_scale])
                     #position, mask = self.pos_matrix(H,W,self.args.scale[idx_scale])
                     #print(timer_test.toc())
                     if self.args.n_GPUs>1 and not self.args.cpu:
