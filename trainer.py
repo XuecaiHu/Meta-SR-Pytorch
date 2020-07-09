@@ -104,13 +104,13 @@ class Trainer():
 
         i = 1
         h, w,_ = pos_mat.size()
-        while(pos_mat[i][0][0]<= 1e-6 and i<h):
+        while(pos_mat[i][0][0]>= 1e-6 and i<h):
             i = i+1
 
         j = 1
         #pdb.set_trace()
         h, w,_ = pos_mat.size()
-        while(pos_mat[0][j][1]<= 1e-6 and j<w):
+        while(pos_mat[0][j][1]>= 1e-6 and j<w):
             j = j+1
 
         pos_mat_small = pos_mat[0:i,0:j,:]
