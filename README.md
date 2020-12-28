@@ -76,4 +76,4 @@ python main.py --model metardn --save metardn --ext sep --pre_train ./experiment
 }
 ```
 # Contact
-Xuecai Hu (huxc@mail.ustc.edu.cn)
+Xuecai Hu (xuecai.hu@cripac.ia.ac.cn  or huxc@mail.ustc.edu.cn)
