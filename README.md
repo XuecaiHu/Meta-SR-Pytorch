@@ -10,8 +10,8 @@ Our code is built on [EDSR(PyTorch)](https://github.com/thstkdgus35/EDSR-PyTorch
 
 
 # Attention
-* The master branch has   fearful bug!!! we check the code as soon as possible.（2020-12-31）
-*I find an error in my camera-ready, the PSNR of our Meta-RDN on scale 1.2 is 40.04 not 40.40.
+* The master branch has   fearful bug!!! we check the code as soon as possible（2020-12-31）
+* I find an error in my camera-ready, the PSNR of our Meta-RDN on scale 1.2 is 40.04 not 40.40.
 # Requirements
 
 * Pytorch 0.4.0
