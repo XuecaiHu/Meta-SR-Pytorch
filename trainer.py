@@ -50,13 +50,13 @@ class Trainer():
 
 
         ####projection  coordinate  and caculate the offset
-        h_project_coord = torch.arange(0, outH, 1).mul(1.0 / scale)
+        h_project_coord = torch.arange(0., outH, 1).mul(1.0 / scale)
         int_h_project_coord = torch.floor(h_project_coord)
 
         offset_h_coord = h_project_coord - int_h_project_coord
         int_h_project_coord = int_h_project_coord.int()
 
-        w_project_coord = torch.arange(0, outW, 1).mul(1.0 / scale)
+        w_project_coord = torch.arange(0., outW, 1).mul(1.0 / scale)
         int_w_project_coord = torch.floor(w_project_coord)
 
         offset_w_coord = w_project_coord - int_w_project_coord
